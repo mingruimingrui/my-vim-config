@@ -28,6 +28,8 @@ Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-jedi'  " python
+Plug 'ncm2/ncm2-go'  " golang
 
 " jedi python toolkit
 Plug 'davidhalter/jedi-vim'
@@ -37,6 +39,9 @@ Plug 'tweekmonster/impsort.vim'
 
 " Better indenting for python
 Plug 'Vimjas/vim-python-pep8-indent'
+
+" Golang
+Plug 'fatih/vim-go'
 
 call plug#end()
 
@@ -143,7 +148,10 @@ let g:ale_lint_on_save = '1'
 " ncm2 options
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=menuone,noselect,noinsert
-inoremap <C-c> <ESC>
+
+let ncm2#popup_delay = 5
+let ncm2#complete_length = [[1,1]]
+let g:ncm2#matcher = 'substrfuzzy'
 
 set pumheight=5
 

@@ -22,15 +22,20 @@ fi
 mkdir -p $NVIM_CONFIG_DIR
 
 # Make a copy of current init.vim file
-for filename in $(find $NVIM_CONFIG_DIR/init.vim* | sort -r); do
-    echo "Moving $filename to $filename.bak"
-    mv $filename $filename.bak
-done
+if [ -f $NVIM_CONFIG_DIR/init.vim ]; then
+    for filename in $(find $NVIM_CONFIG_DIR/init.vim* | sort -r); do
+        echo "Moving $filename to $filename.bak"
+        mv $filename $filename.bak
+    done
+fi
 
 # Copy init.vim to config directory
 cp init.vim $NVIM_CONFIG_DIR/init.vim
 
 # Install plugins
-nvim +PlugUpgrade +PlugUpdate +qall
+nvim +PlugClean +PlugUpgrade +PlugUpdate +qall
+nvim +GoUpdateBinaries +qall
+
+# Install
 
 echo "Setup complete"

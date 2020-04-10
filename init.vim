@@ -43,6 +43,9 @@ Plug 'Vimjas/vim-python-pep8-indent'
 " Golang
 Plug 'fatih/vim-go'
 
+" Yaml
+Plug 'stephpy/vim-yaml'
+
 call plug#end()
 
 
@@ -176,3 +179,6 @@ let g:jedi#enable_speed_debugging=0
 " Remove all trailing whitespace by pressing C-S
 nnoremap <C-S> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+" Use tab size 2 in yaml
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2

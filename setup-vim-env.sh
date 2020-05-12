@@ -30,7 +30,7 @@ if [ -f $NVIM_CONFIG_DIR/init.vim ]; then
 fi
 
 # Copy init.vim to config directory
-cp init.vim $NVIM_CONFIG_DIR/init.vim
+cp nvim/init.vim $NVIM_CONFIG_DIR/init.vim
 
 # Install plugins
 nvim +PlugClean +PlugUpgrade +PlugUpdate +qall

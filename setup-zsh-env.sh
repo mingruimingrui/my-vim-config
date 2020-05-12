@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-# Check if shell is ZSH
-if [ ! $ZSH_CUSTOM ]; then
+# Check if oh my zsh is installed
+if [ ! -z $ZSH_CUSTOM ]; then
 	sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
@@ -15,9 +15,21 @@ if [ -f $HOME/.zshrc ]; then
 fi
 
 # Install dependecies
-git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+CONDA_ZSH_COMPLETION_DIR=${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
+if [ ! -d $CONDA_ZSH_COMPLETION_DIR ]; then
+	git clone https://github.com/esc/conda-zsh-completion $CONDA_ZSH_COMPLETION_DIR
+fi
 
-# Copy zshrc
+ZSH_AUTOSUGGESTIONS_DIR=${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+if [ ! -d $ZSH_AUTOSUGGESTIONS_DIR ]; then
+	git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_AUTOSUGGESTIONS_DIR
+fi
+
+ZSH_SYNTAX_HIGHLIGHTING_DIR=${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+if [ ! -d $ZSH_SYNTAX_HIGHLIGHTING_DIR ]; then
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_SYNTAX_HIGHLIGHTING_DIR
+fi
+
+# Copy zshrc files
 cp zsh/zshrc ~/.zshrc
+cp zsh/custom.zsh ~/.oh-my-zsh/custom

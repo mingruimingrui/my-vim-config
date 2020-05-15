@@ -84,6 +84,7 @@ plugins=(
 	osx
 	pip
 	python
+	rsync
 	screen
 	ubuntu
 	vscode

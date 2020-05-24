@@ -35,6 +35,15 @@ if [ $(command -v nvim) ]; then
 	}
 fi
 
-######## rsync
+######## SSH and sync
 
-alias rsync="rsync --cvs-ignore --max-size=10m"
+alias rsync="rsync --cvs-exclude --max-size=10m"
+function tunnel() {
+	ssh -NL "localhost:$2":"localhost:$2" $1
+}
+
+######## Local packages
+
+if [[ "$PATH" == ?(*:)"$HOME/.local/bin"?(:*) ]]; then
+		export PATH=$HOME/.local/bin:$PATH
+fi

@@ -45,5 +45,5 @@ function tunnel() {
 ######## Local packages
 
 if [[ "$PATH" == ?(*:)"$HOME/.local/bin"?(:*) ]]; then
-		export PATH=$HOME/.local/bin:$PATH
+	export PATH=$HOME/.local/bin:$PATH
 fi

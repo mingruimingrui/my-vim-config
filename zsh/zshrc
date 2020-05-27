@@ -77,13 +77,13 @@ plugins=(
 	docker-compose
 	git
 	gitignore
-	go
 	golang
 	node
 	npm
 	npx
 	osx
 	pip
+	pipenv
 	python
 	rsync
 	screen

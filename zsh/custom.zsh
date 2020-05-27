@@ -2,6 +2,12 @@
 unsetopt share_history
 unsetopt BEEP
 
+######## Locale
+
+export LESSCHARSET=utf-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+
 ######## Brew
 
 if [ $(command -v brew) ]; then
@@ -35,7 +41,7 @@ if [ $(command -v nvim) ]; then
 	}
 fi
 
-######## SSH and sync
+######## SSH and rsync
 
 alias rsync="rsync --cvs-exclude --max-size=10m"
 function tunnel() {

@@ -3,7 +3,7 @@ set -e
 
 # Check if oh my zsh is installed
 if [ ! -d $HOME/.oh-my-zsh ]; then
-	sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -o --unattended
 fi
 
 # Make a copy of current .zshrc file

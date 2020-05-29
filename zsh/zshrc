@@ -70,9 +70,9 @@ ZSH_THEME=re5et
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	archlinux
-	brew
-	debian
+	#archlinux
+	#brew
+	#debian
 	docker
 	docker-compose
 	git
@@ -81,15 +81,15 @@ plugins=(
 	node
 	npm
 	npx
-	osx
+	#osx
 	pip
 	pipenv
 	python
 	rsync
 	screen
-	ubuntu
+	#ubuntu
 	vscode
-	xcode
+	#xcode
 
 	conda-zsh-completion
 	zsh-autosuggestions

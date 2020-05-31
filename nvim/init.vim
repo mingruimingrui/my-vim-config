@@ -5,7 +5,8 @@ call plug#begin('~/.vim/plugged')
 
 " File explorer
 Plug 'preservim/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Code outline
 Plug 'majutsushi/tagbar'

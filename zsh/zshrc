@@ -73,14 +73,14 @@ plugins=(
 	#archlinux
 	#brew
 	#debian
-	docker
-	docker-compose
+	#docker
+	#docker-compose
 	git
 	gitignore
-	golang
-	node
-	npm
-	npx
+	#golang
+	#node
+	#npm
+	#npx
 	#osx
 	pip
 	pipenv
@@ -88,7 +88,7 @@ plugins=(
 	rsync
 	screen
 	#ubuntu
-	vscode
+	#vscode
 	#xcode
 
 	conda-zsh-completion

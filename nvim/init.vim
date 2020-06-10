@@ -16,7 +16,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Linter
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 
 " Fuzzy file search
 Plug 'kien/ctrlp.vim'
@@ -42,7 +42,7 @@ Plug 'tweekmonster/impsort.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 
 " Golang
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 
 " Yaml
 Plug 'stephpy/vim-yaml'

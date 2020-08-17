@@ -32,6 +32,13 @@ if [ -f $CONDA_INIT_PATH ]; then
 	}
 fi
 
+######## Go
+
+GO_BIN_PATH=$HOME/.local/go/bin
+if [ -d $GO_BIN_PATH ]; then
+	export PATH=$GO_BIN_PATH:$PATH
+fi
+
 ######## Neovim
 
 if [ $(command -v nvim) ]; then
@@ -52,4 +59,12 @@ function tunnel() {
 
 if [[ "$PATH" == ?(*:)"$HOME/.local/bin"?(:*) ]]; then
 	export PATH=$HOME/.local/bin:$PATH
+fi
+if [[ -d $HOME/.local/bins ]]; then
+	for dirname in $(ls $HOME/.local/bins); do
+		dirpath=$HOME/.local/bins/$dirname
+		if [ -d $dirpath ]; then
+			export PATH=$dirname:$PATH
+		fi
+	done
 fi

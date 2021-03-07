@@ -27,10 +27,10 @@ fi
 # - zsh_autosuggestions
 # - zsh_syntax_highlighting
 
-# CONDA_ZSH_COMPLETION_DIR=${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
-# if [ ! -d $CONDA_ZSH_COMPLETION_DIR ]; then
-# 	git clone https://github.com/esc/conda-zsh-completion $CONDA_ZSH_COMPLETION_DIR
-# fi
+CONDA_ZSH_COMPLETION_DIR=${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
+if [ ! -d $CONDA_ZSH_COMPLETION_DIR ]; then
+	git clone https://github.com/esc/conda-zsh-completion $CONDA_ZSH_COMPLETION_DIR
+fi
 
 ZSH_AUTOSUGGESTIONS_DIR=${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 if [ ! -d $ZSH_AUTOSUGGESTIONS_DIR ]; then

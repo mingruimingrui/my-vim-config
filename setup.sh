@@ -11,7 +11,7 @@ git clone https://github.com/mingruimingrui/my-vim-config.git $MY_VIM_CONFIG_DIR
 
 # Install oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
-	sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -o --unattended
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -o --unattended
 fi
 
 # Make a copy of current .zshrc file

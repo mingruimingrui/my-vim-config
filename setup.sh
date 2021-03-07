@@ -2,7 +2,6 @@
 
 # Check if required packages are installed
 [ $(command -v git) ] || (echo "git is needed" && exit 1)
-[ $(command -v nvim) ] || (echo "neovim is needed" && exit 1)
 [ $(command -v curl) ] || (echo "curl is needed" && exit 1)
 
 # Download my-vim-config into ~/.my-vim-config
@@ -47,6 +46,11 @@ ln -s ~/
 cp $MY_VIM_CONFIG_DIR/zsh/zshrc ~/.zshrc
 cp $MY_VIM_CONFIG_DIR/zsh/custom.zsh ~/.oh-my-zsh/custom
 
+echo "ZSH setup complete"
+
+# Check if neovim exists else exit 0
+[ $(command -v nvim) ] || (exit 0)
+
 # Nvim config dir
 NVIM_CONFIG_DIR=$HOME/.config/nvim
 mkdir -p $NVIM_CONFIG_DIR
@@ -73,4 +77,4 @@ ln -s $MY_VIM_CONFIG_DIR/nvim/init.vim $NVIM_CONFIG_DIR/init.vim
 nvim +PlugClean +PlugUpgrade +PlugUpdate +qall
 nvim +GoUpdateBinaries +qall
 
-echo "Setup complete"
+echo "Neovim setup complete"

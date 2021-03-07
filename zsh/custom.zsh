@@ -1,12 +1,27 @@
-
 unsetopt share_history
 unsetopt BEEP
+
+function add-to-path() {
+    if [[ "$PATH" != ?(*:)"$1"?(:*) ]]; then
+        export PATH=$1:$PATH
+    fi
+}
 
 ######## Locale
 
 export LESSCHARSET=utf-8
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+
+######## Local packages
+
+add-to-path "$HOME/.local/bin"
+if [[ -d $HOME/.local/bins ]]; then
+	for dirname in $(ls $HOME/.local/bins); do
+		dirpath=$HOME/.local/bins/$dirname
+		add-to-path $dirpath
+	done
+fi
 
 ######## Brew
 
@@ -22,7 +37,8 @@ if [ $(command -v brew) ]; then
 	}
 fi
 
-######## Python
+######## Conda
+# Conda is my perferred method to run python
 
 CONDA_INIT_PATH=$HOME/miniconda3/etc/profile.d/conda.sh
 if [ -f $CONDA_INIT_PATH ]; then
@@ -33,18 +49,17 @@ if [ -f $CONDA_INIT_PATH ]; then
 fi
 
 ######## Go
+# I usually install go locally under $HOME/.local/go
 
-GO_BIN_PATH=$HOME/.local/go/bin
-if [ -d $GO_BIN_PATH ]; then
-	export PATH=$GO_BIN_PATH:$PATH
-fi
+add-to-path "$HOME/.local/go/bin"
 
 ######## Neovim
+# Neovim's my editor of choice
 
 if [ $(command -v nvim) ]; then
 	alias vim=nvim
 	function install-nvim-py-pkgs() {
-		pip install --no-cache-dir neovim jedi
+		pip install --no-cache-dir neovim jedi==0.17.2
 	}
 fi
 
@@ -54,17 +69,19 @@ alias rsync="rsync --cvs-exclude --max-size=10m"
 function tunnel() {
 	ssh -NL "localhost:$2":"localhost:$2" $1
 }
+function upsync() {
+	SERVER=$1
+	DESTDIR=$2
 
-######## Local packages
+	if [ -z $SERVER ]; then
+		echo "Usage: upsync SERVER DESTDIR=Projects"
+		return
+	fi
 
-if [[ "$PATH" == ?(*:)"$HOME/.local/bin"?(:*) ]]; then
-	export PATH=$HOME/.local/bin:$PATH
-fi
-if [[ -d $HOME/.local/bins ]]; then
-	for dirname in $(ls $HOME/.local/bins); do
-		dirpath=$HOME/.local/bins/$dirname
-		if [ -d $dirpath ]; then
-			export PATH=$dirname:$PATH
-		fi
-	done
-fi
+	if [ -z $DESTDIR ]; then
+		DESTDIR=Projects
+	fi
+
+	rsync -L -r --cvs-exclude --max-size=10m \
+		. $SERVER:$DESTDIR/$(basename $PWD)
+}

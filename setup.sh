@@ -1,9 +1,8 @@
 #!/bin/sh
 
-# Check if Neovim is installed
+# Check if required packages are installed
+[ $(command -v git) ] || (echo "git is needed" && exit 1)
 [ $(command -v nvim) ] || (echo "neovim is needed" && exit 1)
-
-# Check if curl is installed
 [ $(command -v curl) ] || (echo "curl is needed" && exit 1)
 
 # Download my-vim-config into ~/.my-vim-config

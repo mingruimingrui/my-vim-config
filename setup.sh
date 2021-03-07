@@ -42,9 +42,8 @@ if [ ! -d $ZSH_SYNTAX_HIGHLIGHTING_DIR ]; then
 fi
 
 # Symlink zsh files
-ln -s ~/
-cp $MY_VIM_CONFIG_DIR/zsh/zshrc ~/.zshrc
-cp $MY_VIM_CONFIG_DIR/zsh/custom.zsh ~/.oh-my-zsh/custom
+ln -s $MY_VIM_CONFIG_DIR/zsh/zshrc ~/.zshrc
+ln -s $MY_VIM_CONFIG_DIR/zsh/custom.zsh ~/.oh-my-zsh/custom
 
 echo "ZSH setup complete"
 

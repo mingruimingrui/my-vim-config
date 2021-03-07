@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Check if required packages are installed
+[ $(command -v zsh) ] || (echo "zsh is needed" && exit 1)
 [ $(command -v git) ] || (echo "git is needed" && exit 1)
 [ $(command -v curl) ] || (echo "curl is needed" && exit 1)
 

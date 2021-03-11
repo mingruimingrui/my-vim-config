@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 # Check if required packages are installed
 [ $(command -v zsh) ] || (echo "zsh is needed" && exit 1)
